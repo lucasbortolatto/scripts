@@ -1,0 +1,46 @@
+function branchname () {
+        git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1) /'
+}
+
+alias ll='ls -la'
+alias devtools='cd $HOME/Documents/devTools'
+alias devtools2='cd $HOME/Documents/devTools'
+alias editbash='vi ~/.bash_profile'
+alias updatebash='source ~/.bash_profile'
+alias listbash='cat ~/.bash_profile'
+alias home='cd ~/'
+alias gitdir='cd $HOME/git'
+alias status='git status'
+alias pull='git pull'
+alias branch='git branch'
+alias pod='pod install'
+alias commit='git commit'
+alias checkout='git checkout'
+alias ipnet='ifconfig | grep 172'
+
+#Ioupie specific alias
+alias amplifyinstalldir='cd /usr/local/share/.config/yarn/global/node_modules/@aws-amplify/cli/node_modules'
+alias ioupiedir='cd $HOME/git/ioupie'
+
+#Personal specific alias
+alias pdir='cd $HOME/git/pessoal'
+
+#export JAVA_HOME=/Library/Java/Home
+export PS1='\u@\H:\w $ '
+
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
