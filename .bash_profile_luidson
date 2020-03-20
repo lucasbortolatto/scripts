@@ -1,10 +1,26 @@
+# Personal aliases
+# Created by Luidson Lucas Bortolatto
+# Include general usage and ioupie usage aliases
+# 2020
+
 function branchname () {
-        git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1) /'
+    git branch 2>/dev/null | grep -e '^*' | sed -E 's/^\* (.+)$/(\1) /'
 }
 
+function iosstart() {
+    phoneModel=$1
+    iosVersion=$2
+    ios-sim start --devicetypeid "$1, $2"
+}
+
+function androidstart() {
+    phoneModel=$1
+    emulator -avd phoneModel &
+}
+
+# General alias
 alias ll='ls -la'
 alias devtools='cd $HOME/Documents/devTools'
-alias devtools2='cd $HOME/Documents/devTools'
 alias editbash='vi ~/.bash_profile'
 alias updatebash='source ~/.bash_profile'
 alias listbash='cat ~/.bash_profile'
@@ -16,19 +32,24 @@ alias branch='git branch'
 alias pod='pod install'
 alias commit='git commit'
 alias checkout='git checkout'
-alias ipnet='ifconfig | grep 172'
 
-#Ioupie specific alias
+# IOS alias
+alias iosshow='ios-sim showdevicetypes'
+
+# Android alias
+alias androidshow='emulator -list-avds'
+
+# Ioupie specific alias
 alias amplifyinstalldir='cd /usr/local/share/.config/yarn/global/node_modules/@aws-amplify/cli/node_modules'
 alias ioupiedir='cd $HOME/git/ioupie'
 
-#Personal specific alias
+# Personal specific alias
 alias pdir='cd $HOME/git/pessoal'
 
 #export JAVA_HOME=/Library/Java/Home
 export PS1='\u@\H:\w $ '
 
-# enable color support of ls and also add handy aliases
+# Enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
     alias ls='ls --color=auto'
@@ -39,8 +60,11 @@ if [ -x /usr/bin/dircolors ]; then
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
 fi
-export ANDROID_HOME=/Users/$USER/Library/Android/sdk
-export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 
+# Android Variables
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH=${PATH}:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# NVM Variables
 export NVM_DIR=~/.nvm
 source $(brew --prefix nvm)/nvm.sh
