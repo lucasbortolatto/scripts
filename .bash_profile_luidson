@@ -40,8 +40,17 @@ alias iosshow='ios-sim showdevicetypes'
 alias androidshow='emulator -list-avds'
 
 # Ioupie specific alias
-alias amplifyinstalldir='cd /usr/local/share/.config/yarn/global/node_modules/@aws-amplify/cli/node_modules'
-alias ioupiedir='cd $HOME/git/ioupie'
+alias amplifyinstalldir='cd /usr/local/share/.config/yarn/global/node_modules/@aws-amplify/cli/node_modules'	
+alias ioupiedir='cd $HOME/git/ioupie'	
+alias portaria='cd $HOME/git/ioupie/portaria-service'	
+alias bufunfa='cd $HOME/git/ioupie/bufunfa-service'	
+alias harvey='cd $HOME/git/ioupie/harvey-service'	
+alias louis='cd $HOME/git/ioupie/louis-service'	
+alias mobile='cd $HOME/git/ioupie/ioupiemobileappexpo'	
+alias yinstall='yarn install'	
+alias ybuild='yarn run build'	
+alias ninstall='npm install'	
+alias nbuild='npm run build'
 
 # Personal specific alias
 alias pdir='cd $HOME/git/pessoal'
