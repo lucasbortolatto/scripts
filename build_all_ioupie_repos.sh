@@ -13,19 +13,13 @@ GIT_REPOSITORIES_ARRAY=(server-commons \
 
 
 # Function that clones list of repositories defined on GIT_REPOSITORIES_ARRAY, and build each repository
-function clone_and_build_repositories () {
+function build_all_repositories () {
     num_repositories=${#GIT_REPOSITORIES_ARRAY[@]}
     for ((i = 0 ; i < num_repositories ; i++))
     do
         repository=${GIT_REPOSITORIES_ARRAY[$i]}
         cd $IOUPIEDIR
-        echo ""
-        echo "Clonning $repository repository..."
-        git clone https://gitlab.com/ioupie/$repository.git
-        if [ $? = 0 ]
-        then
-            echo "Repository $repository clonned successfully"
-        fi
+        echo "##############################################################################################################"
         echo ""
         if [ -d $repository ]
         then
@@ -42,6 +36,8 @@ function clone_and_build_repositories () {
                 npm install
                 npm run build
             fi
+            echo "###############################################################################################################"
+            echo "###############################################################################################################"
             cd ..
         else
             echo "ERROR: Repository $repository missing on your git. Please clone try to clone it before run the script"
@@ -52,8 +48,11 @@ function clone_and_build_repositories () {
 if [ $? = 0 ]
 then
     echo ""
-    echo "Repositories clonned and built successfully!"
+    echo ""
+    echo "####################################### All repositories are updated! #########################################"
+    echo "###############################################################################################################"
+    echo "###############################################################################################################"
 fi
 }
 
-clone_and_build_repositories
+build_all_repositories
