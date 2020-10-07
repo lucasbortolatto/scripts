@@ -1,12 +1,11 @@
 #!/bin/bash
 set -e
 
-IOUPIEDIR=~/git/ioupie
-GIT_REPOSITORIES_ARRAY=(portaria-service \
-                        bufunfa-service \
-                        harvey-service \
-                        louis-service \
-                        postal-service)
+MYDIR=~/git/
+GIT_REPOSITORIES_ARRAY=(repository1 \
+                        repository2 \
+                        repository3 \
+                        repository4)
 
 function start_servers () {
     num_repositories=${#GIT_REPOSITORIES_ARRAY[@]}
@@ -16,7 +15,7 @@ function start_servers () {
         echo ""
         echo "starting $repository"
         repository=${GIT_REPOSITORIES_ARRAY[$i]}
-        cd $IOUPIEDIR/$repository
+        cd $MYDIR/$repository
         npm run start
     done
 }

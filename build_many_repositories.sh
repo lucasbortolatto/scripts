@@ -1,15 +1,14 @@
 #!/bin/bash
+
+# Script to build many repositories using yarn install in one go. 
+# It's only needed to update the directory and the repository array with the repositories list
 set -e
 
-IOUPIEDIR=~/git/ioupie
-GIT_REPOSITORIES_ARRAY=(server-commons \
-                        portaria-service \
-                        bufunfa-service \
-                        harvey-service \
-                        louis-service \
-                        postal-service \
-                        ioupiemobileappexpo \
-                        lms-app)
+MYDIR=~/git/
+GIT_REPOSITORIES_ARRAY=(repository1 \
+                        repository2 \
+                        repository3 \
+                        repository4)
 
 
 # Function that clones list of repositories defined on GIT_REPOSITORIES_ARRAY, and build each repository
@@ -18,24 +17,16 @@ function build_all_repositories () {
     for ((i = 0 ; i < num_repositories ; i++))
     do
         repository=${GIT_REPOSITORIES_ARRAY[$i]}
-        cd $IOUPIEDIR
+        cd $MYDIR
         echo "##############################################################################################################"
         echo ""
         if [ -d $repository ]
         then
             cd $repository
             echo "Building repository $repository"
-            if [ "$repository" = "server-commons" ]
-            then
                 yarn install
                 yarn run build
-            elif [ "$repository" = "ioupiemobileappexpo" -o "$repository" = "lms-app" ]
-            then
-                yarn install
-            else
-                npm install
-                npm run build
-            fi
+
             echo "###############################################################################################################"
             echo "###############################################################################################################"
             cd ..

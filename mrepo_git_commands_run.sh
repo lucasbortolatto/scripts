@@ -1,14 +1,10 @@
 #!/bin/sh
 # List of repositories
-IOUPIEDIR=~/git/ioupie
-GIT_REPOSITORIES_ARRAY=(server-commons \
-                        portaria-service \
-                        bufunfa-service \
-                        harvey-service \
-                        louis-service \
-                        postal-service \
-                        ioupiemobileappexpo \
-                        lms-app)
+MYDIR=~/git/
+GIT_REPOSITORIES_ARRAY=(repository1 \
+                        repository2 \
+                        repository3 \
+                        repository4)
 
 numRepositories=${#GIT_REPOSITORIES_ARRAY[@]}
 
@@ -16,7 +12,7 @@ function gitCommand () {
     for ((i = 0 ; i < numRepositories ; i++))
 do
     module=${GIT_REPOSITORIES_ARRAY[$i]}
-    cd $IOUPIEDIR
+    cd $MYDIR
     echo "#############################################################################################################"
     echo ""
     echo "Running command $command on $module repository..."
